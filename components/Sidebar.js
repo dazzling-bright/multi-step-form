@@ -1,3 +1,5 @@
+
+import Link from "next/link";
 import React from "react";
 
 const steps = [1, 2, 3, 4];
@@ -5,20 +7,17 @@ const steps = [1, 2, 3, 4];
 const Sidebar = () => {
   return (
     <aside
-      className="flex justify-center absolute z-10 w-full h-60 top-0 left-0 gap-8 text-white"
-      style={{
-        backgroundImage: "url('/bg-mobile.svg')",
-        backgroundSize: "cover",
-        backgroundPosition: "top",
-      }}
+      className="flex justify-center items-center absolute md:relative z-0 w-full md:w-1/3 h-80 md:h-screen md:flex-col md:gap-24 md:justify-start md:items-start gap-8 text-white bg-cover bg-top"
+      style={{ backgroundImage: "url('/bg-mobile.svg')" }}
     >
       {steps.map((step) => (
-        <p
+        <Link
+          href="/"
           key={step}
-          className={`p-4 self-center rounded-full border border-white`}
+          className="w-12 h-12 flex items-center justify-center rounded-full border border-white"
         >
           {step}
-        </p>
+        </Link>
       ))}
     </aside>
   );
