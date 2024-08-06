@@ -1,15 +1,10 @@
 import React from "react";
 import "../app/globals.css";
-import Sidebar from "../components/Sidebar";
-import StepOneForm from "../components/StepOneForm";
+import StepOne from "./stepOne/page";
 
-const StepOne = () => {
-  return (
-    <div className="flex flex-col md:flex-row min-h-screen">
-      <Sidebar />
-      <StepOneForm />
-    </div>
-  );
+
+const HomePage = () => {
+  return <StepOne/>;
 };
 
-export default StepOne;
+export default HomePage;

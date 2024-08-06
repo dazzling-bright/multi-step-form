@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import Button from "./Button";
+import Button from "@/components/Button";
 
-const StepOneForm = () => {
+const StepOne = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -22,7 +22,7 @@ const StepOneForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push("/step2");
+    router.push("/stepTwo");
   };
 
   const formInputFields = [
@@ -33,7 +33,6 @@ const StepOneForm = () => {
       label: "Name",
       type: "text",
     },
-
     {
       id: "email",
       name: "email",
@@ -51,10 +50,10 @@ const StepOneForm = () => {
   ];
 
   return (
-    <article className="flex flex-col items-center justify-between flex-1 bg-blue-200">
-      <main className="p-8 mx-4 md:mx-0 -translate-y-12 md:translate-y-0  md:w-full md:flex-1 rounded-2xl md:rounded-none shadow-md bg-white">
+    <article className="flex-1 flex flex-col  md:px-0 bg-light-blue">
+      <div className="flex-grow m-8 p-8 mx-4 sm:mx-12 md:m-0 md:w-full rounded-2xl md:rounded-none shadow-md bg-white -translate-y-20 md:transform-none">
         <header className="mb-4">
-          <h1 className="font-bold text-xl my-2">Personal Information</h1>
+          <h1 className="font-bold text-2xl my-2">Personal Info</h1>
           <p>Please provide your name, email address, and phone number</p>
         </header>
         <form onSubmit={handleSubmit} className="w-full">
@@ -63,6 +62,7 @@ const StepOneForm = () => {
               <label className="font-bold text-sm" htmlFor={id}>
                 {label}
               </label>
+
               <input
                 type={type}
                 id={id}
@@ -76,18 +76,19 @@ const StepOneForm = () => {
             </React.Fragment>
           ))}
         </form>
-      </main>
+      </div>
 
       <div className="bg-white w-full p-4 text-right mt-auto">
         <Button
+          onClick={handleSubmit}
           type="submit"
-          className="p-4 px-12 bg-blue-900 text-white rounded-lg"
+          className="p-4 px-12 bg-marine-blue text-white rounded-lg font-bold"
         >
-          Next
+          Next Step
         </Button>
       </div>
     </article>
   );
 };
 
-export default StepOneForm;
+export default StepOne;
