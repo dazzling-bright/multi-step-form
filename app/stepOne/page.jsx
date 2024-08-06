@@ -79,11 +79,7 @@ const StepOne = () => {
       </div>
 
       <div className="bg-white w-full p-4 text-right mt-auto">
-        <Button
-          onClick={handleSubmit}
-          type="submit"
-          className="p-4 px-12 bg-marine-blue text-white rounded-lg font-bold"
-        >
+        <Button onClick={handleSubmit} type="submit">
           Next Step
         </Button>
       </div>
