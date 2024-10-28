@@ -1,10 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import Button from "@/components/Button";
+import Button from "@/app/components/Button";
+import useHandleSubmit from "@/app/functions/handleSubmit";
 
 const StepOne = () => {
-  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -12,17 +11,15 @@ const StepOne = () => {
     telephone: "",
   });
 
+  const nextPath = "step-two";
+  const handleSubmit = useHandleSubmit(nextPath);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    router.push("/stepTwo");
   };
 
   const formInputFields = [
@@ -50,19 +47,18 @@ const StepOne = () => {
   ];
 
   return (
-    <article className="flex-1 flex flex-col  md:px-0 bg-light-blue">
-      <div className="flex-grow m-8 p-8 mx-4 sm:mx-12 md:m-0 md:w-full rounded-2xl md:rounded-none shadow-md bg-white -translate-y-20 md:transform-none">
+    <article className="flex-1 flex flex-col px-4 h-full">
+      <div className="flex-grow flex flex-col md:w-full rounded-2xl md:rounded-none -translate-y-20 md:transform-none">
         <header className="mb-4">
           <h1 className="font-bold text-2xl my-2">Personal Info</h1>
           <p>Please provide your name, email address, and phone number</p>
         </header>
-        <form onSubmit={handleSubmit} className="w-full">
+        <form onSubmit={handleSubmit} className="flex flex-col flex-1">
           {formInputFields.map(({ id, name, placeholder, label, type }) => (
             <React.Fragment key={id}>
               <label className="font-bold text-sm" htmlFor={id}>
                 {label}
               </label>
-
               <input
                 type={type}
                 id={id}
@@ -75,13 +71,10 @@ const StepOne = () => {
               />
             </React.Fragment>
           ))}
+          <div className="bg-white text-right mt-auto">
+            <Button type="submit">Next Step</Button>
+          </div>
         </form>
-      </div>
-
-      <div className="bg-white w-full p-4 text-right mt-auto">
-        <Button onClick={handleSubmit} type="submit">
-          Next Step
-        </Button>
       </div>
     </article>
   );

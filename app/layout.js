@@ -1,20 +1,21 @@
-import Sidebar from "@/components/Sidebar";
-import "./globals.css";
+"use client";
 
-export const metadata = {
-  title: "Multi Step Form",
-  description: "A frontend Mentor Multi form challenge",
-};
+import Sidebar from "@/app/components/Sidebar";
+import "./globals.css";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="font-sans">
-      <body className="md:m-8 ">
-        <section className=" md:h-[600px] h-screen md:rounded-3xl max-w-5xl mx-auto flex flex-col md:flex-row shadow-lg overflow-auto">
-          <Sidebar />
-          <main className="flex-1 flex flex-col ">{children}</main>
-        </section>
-      </body>
-    </html>
+    <Provider store={store}>
+      <html lang="en" className="font-sans">
+        <body className="h-screen flex flex-col md:flex-row justify-center items-center">
+          <section className=" md:rounded-3xl md:w-[80%] flex flex-col md:flex-row overflow-hidden">
+            <Sidebar />
+            <main className="w-full">{children}</main>
+          </section>
+        </body>
+      </html>
+    </Provider>
   );
 }

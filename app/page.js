@@ -1,6 +1,6 @@
 import React from "react";
 import "../app/globals.css";
-import StepOne from "./stepOne/page";
+import StepOne from "./step-one/page";
 
 
 const HomePage = () => {
