@@ -14,7 +14,7 @@ const Sidebar = () => {
   const currentPath = usePathname();
 
   return (
-    <aside className="flex justify-center items-center w-full md:w-2/5 md:px-4 md:flex-col py-4 md:gap-24 md:justify-start md:items-start gap-8 text-white bg-cover bg-center bg-no-repeat bg-[url('/bg-mobile.svg')]">
+    <aside className="flex justify-center items-center w-full md:w-2/5 md:px-4 md:flex-col py-4 md:gap-24 md:justify-start md:items-start gap-8 text-white bg-cover bg-center bg-no-repeat bg-[url('/bg-mobile.svg')] md:rounded-3xl">
       {steps.map(({ step, path }) => (
         <Link href={path} key={step}>
           <p

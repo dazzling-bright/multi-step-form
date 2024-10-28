@@ -9,7 +9,7 @@ import useHandleSubmit from "@/app/functions/handleSubmit";
 import {
   monthlySubscription,
   yearlySubscription,
-} from "../store/subscriptionPlanSlice";
+} from "../store/store-slices/subscriptionPlanSlice";
 
 const StepTwo = () => {
   const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const StepTwo = () => {
   const plans = isYearly ? yearlyPlansArray : monthlyPlansArray;
 
   return (
-    <article className="flex-1 flex flex-col md:px-6">
+    <article className="flex-1 flex flex-col md:px-6 ">
       <section className="flex-grow sm:mx-12 md:m-0 md:w-full rounded-2xl md:rounded-none -translate-y-20 md:transform-none">
         <header className="mb-4">
           <h1 className="font-bold text-2xl my-2">Select your plan</h1>

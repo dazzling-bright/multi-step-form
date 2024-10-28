@@ -5,15 +5,15 @@ import Button from "@/app/components/Button";
 import Image from "next/image";
 import Link from "next/link";
 import useHandleSubmit from "@/app/functions/handleSubmit";
+import { useSelector } from "react-redux";
 
 const StepThree = () => {
-  const [isYearly, setIsYearly] = useState(false);
-  const ArcadePlanIcon = "/icon-arcade.svg";
-  const AdvancedPlanIcon = "/icon-advanced.svg";
-  const ProPlanIcon = "/icon-pro.svg";
-
   const nextPath = "step-three";
   const handleSubmit = useHandleSubmit(nextPath);
+
+  const subscriptionPlan = useSelector(
+    (state) => state.subscriptionPlan.currentSubscriptionPlan
+  );
 
   return (
     <article className="flex-1 flex flex-col md:px-6 h-full">
@@ -29,7 +29,7 @@ const StepThree = () => {
         <section className="flex flex-col flex-1 gap-6 text-marine-blue">
           <div className="flex justify-between items-center font-bold">
             <p>
-              <span>Arcade (yearly) </span> <br />
+              <span>Arcade ({subscriptionPlan}) </span> <br />
               <span className="text-cool-gray underline font-normal cursor-pointer">
                 Change
               </span>
@@ -45,7 +45,10 @@ const StepThree = () => {
           </p>
 
           <p className="flex justify-between">
-            <span>Total (per year)</span>
+            <span>
+              Total
+              {subscriptionPlan === "yearly" ? "(per year)" : "(per month)"}
+            </span>
             <span className="text-purplish-blue">+$120/yr</span>
           </p>
         </section>
